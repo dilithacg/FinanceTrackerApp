@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:finance_tracker_app/providers/auth_provider.dart';
+import 'package:finance_tracker_app/providers/transaction_provider.dart'; // <-- Import this
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'app/router.dart';
 import 'firebase_options.dart';
-import 'providers/auth_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +23,8 @@ class FinanceApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
-        // Add more providers here later
+        ChangeNotifierProvider(create: (_) => TransactionProvider()), // <-- Add this
+
       ],
       child: MaterialApp.router(
         title: 'Finance Tracker',
