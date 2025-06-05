@@ -1,4 +1,5 @@
 import 'package:finance_tracker_app/providers/auth_provider.dart';
+import 'package:finance_tracker_app/providers/budget_provider.dart';
 import 'package:finance_tracker_app/providers/transaction_provider.dart'; // <-- Import this
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class FinanceApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => TransactionProvider()), // <-- Add this
+        ChangeNotifierProvider(create: (_) => BudgetProvider()),
 
       ],
       child: MaterialApp.router(
