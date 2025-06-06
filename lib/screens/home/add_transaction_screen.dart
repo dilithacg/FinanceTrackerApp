@@ -60,7 +60,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: const Text("New Transaction"),
+        title: const Text("New Transaction",style: TextStyle(color: Colors.white),),
         centerTitle: true,
         elevation: 0,
         flexibleSpace: Container(

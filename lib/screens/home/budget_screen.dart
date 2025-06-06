@@ -78,7 +78,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Monthly Budget"),
+        title: const Text("Monthly Budget",style: TextStyle(color: Colors.white),),
         centerTitle: true,
         elevation: 0,
         flexibleSpace: Container(

@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     try {
       await authProvider.login(_emailController.text, _passwordController.text);
-      context.go('/dashboard');
+      context.go('/home');
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Login failed: $e')),

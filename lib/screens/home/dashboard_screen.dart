@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../const/colors.dart';
+import '../../const/settings.dart';
 import '../../widgets/wallet_card.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/budget_provider.dart';
@@ -35,6 +36,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -42,6 +46,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
@@ -51,14 +56,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                AppColors.primaryLight,
-                AppColors.primaryDark,
+               AppColors.primaryLight,
+               AppColors.primaryDark,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings, color: Colors.white),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: Consumer2<TransactionProvider, BudgetProvider>(
         builder: (context, txnProvider, budgetProvider, _) {
@@ -76,7 +92,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
+                colors: isDark
+                    ? [
+                  theme.colorScheme.background,
+                  theme.colorScheme.surface,
+                ]
+                    : [
                   Colors.blue.shade50,
                   Colors.white,
                 ],
@@ -92,12 +113,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     budget: budget,
                   ),
                   const SizedBox(height: 20),
-                  const Text(
+                  Text(
                     'Quick Actions',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Colors.blueGrey,
+                      color: isDark ? Colors.grey[300] : Colors.blueGrey,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -112,7 +133,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           context,
                           Icons.add_circle_outline,
                           'Add Transaction',
-                          Colors.blue.shade400,
+                          isDark ? Colors.blue.shade700 : Colors.blue.shade400,
                               () {
                             Navigator.push(
                               context,
@@ -126,7 +147,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           context,
                           Icons.history,
                           'Transaction History',
-                          Colors.green.shade400,
+                          isDark ? Colors.green.shade700 : Colors.green.shade400,
                               () {
                             Navigator.push(
                               context,
@@ -140,7 +161,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           context,
                           Icons.account_balance_wallet,
                           'Budget',
-                          Colors.orange.shade400,
+                          isDark ? Colors.orange.shade700 : Colors.orange.shade400,
                               () {
                             Navigator.push(
                               context,
@@ -154,7 +175,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           context,
                           Icons.analytics,
                           'Reports',
-                          Colors.purple.shade400,
+                          isDark ? Colors.purple.shade700 : Colors.purple.shade400,
                               () {
                             Navigator.push(
                               context,

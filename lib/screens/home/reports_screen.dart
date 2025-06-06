@@ -33,7 +33,7 @@ class ReportsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Expense Reports"),
+        title: const Text("Expense Reports",style: TextStyle(color: Colors.white),),
         centerTitle: true,
         elevation: 0,
         flexibleSpace: Container(
