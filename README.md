@@ -1,7 +1,7 @@
 # finance_tracker_app
 A simple Flutter app for managing personal finances using Firebase for authentication and data storage. Track income, expenses, budgets, and view transaction history in a clean, user-friendly interface.
 
-Gmart Online Technologies internship task - Dilitha Ganegama
+internship task - Dilitha Ganegama
 
 ## Features
 User registration and login using Firebase Authentication
